@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 //Clients routes
 Route::get('/', function () {
-    return view('client.app');
+    return view('pages.client.home');
 })->name('client');
 
 //Admin routes
 Route::get('/admin/{token}', function($token){
-    if($token === '333') return view('admin.app');
+    if($token === '333') return view('pages.admin.login');
     else return view('404.errorToken');
 })->name('admin');
