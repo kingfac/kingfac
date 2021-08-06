@@ -20,6 +20,6 @@ Route::get('/', function () {
 
 //Admin routes
 Route::get('/admin/{token}', function($token){
-    if($token === '333') return view('pages.admin.login');
+    if($token === '333') return view('pages.admin.home');
     else return view('404.errorToken');
 })->name('admin');
