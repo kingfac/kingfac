@@ -16,10 +16,13 @@
         <link rel="stylesheet" href="{{asset('css/init.css')}}">
         <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
         <script src="{{asset('js/x.app.js')}}"></script>
+        <script src="{{asset('js/x.admin.js')}}"></script>
     </head>
-    <body class="overflow-x-hidden antialiased" x-data="X_app()">
+    <body class="overflow-x-hidden antialiased" x-data="X_app()" x-init="init()">
         {{-- Lien --}}
         @yield('content')
+        {{-- @include('pages.admin.home') --}}
+        @yield('admin')
         <button class="fixed px-5 py-4 text-lg font-bold text-white transition duration-300 transform bg-gray-900 right-5 bottom-10 hover:opacity-25" id="scrolleur" @click="scrolTop()">
             <i class="fa fa-chevron-up"></i>
         </button>

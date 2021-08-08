@@ -2,57 +2,53 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\ceproInfo;
+use App\Models\domaine;
 use Livewire\Component;
 
-class CeproInfos extends Component
+class Domaines extends Component
 {
-    public $info;
-    public $lib;
+    public $domaines;
     public $selectedId;
-    public $infos;
-
+    public $lib;
+    public $descri;
+    public $lastId;
     public function render()
     {
-        $this->infos = ceproInfo::all();
-        return view('livewire.admin.cepro-infos');
+        $this->domaines = domaine::all();
+        return view('livewire.admin.domaines');
     }
-
     function resetFields(){
         $this->selectedId  = 0;
         $this->lib  = '';
-        $this->info  = '';
+        $this->descri  = '';
     }
 
     function store(){
-        //dd($this->lib, $this->info);
-        //$this->info = html_entity_decode($this->info);
         $validatedData = $this->validate([
            'lib' => 'required',
-           'info' => 'required'
+           'descri' => 'required'
        ]);      
-       
-       //dd($validatedData);
-       ceproInfo::create($validatedData);
-       session()->flash('message', 'Info enregistré avec succès');
+       $data = domaine::create($validatedData);
+       $this->lastId = $data->id;
+       session()->flash('message', 'domaine enregistré avec succès');
        $this->emit('Added');
-       //$this->infos = ceproInfo::all();
        $this->resetFields();
+
     }
     public function update(){
+        //dd($this->selectedId);
         $v = $this->validate([
             'lib' => 'required',
             'selectedId' => 'required',
-            'info' => 'required'
+            'descri' => 'required'
         ]);
-        //dd($v);
-        $record = ceproInfo::find($this->selectedId);
+        $record = domaine::find($this->selectedId);
         $record->update([
             'lib' => $this->lib,
-            'info' => $this->info
+            'descri' => $this->descri
         ]);
         $this->resetFields();
-        session()->flash('message', 'Info modifié avec succès');
+        session()->flash('message', 'domaine modifié avec succès');
         $this->emit('Updated');
         $this->dispatchBrowserEvent('Updated');
     }
@@ -61,23 +57,18 @@ class CeproInfos extends Component
         $v = $this->validate([
             'lib' => 'required',
             'selectedId' => 'required',
-            'info' => 'required'
+            'descri' => 'required'
         ]);
-        //dd($v);
-        $record = ceproInfo::find($this->selectedId);
+        $record = domaine::find($this->selectedId);
         $record->delete();
         $this->resetFields();
-        session()->flash('message', 'Info Supprimé avec succès');
+        session()->flash('message', 'domaine Supprimé avec succès');
         $this->emit('Deleted');
         $this->dispatchBrowserEvent('Deleted');
     }
     function charger($ligne){
         $this->selectedId = $ligne["id"];
         $this->lib = $ligne["lib"];
-        $this->info = $ligne["info"];
-    }
-
-    function aa(){
-        dd('bonjourno');
+        $this->descri = $ligne["descri"];
     }
 }

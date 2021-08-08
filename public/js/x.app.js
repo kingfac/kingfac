@@ -9,11 +9,43 @@ function X_app() {
       toast : false,
       toastMessage : '',
       toastEtat : false,
+      init(){
+        window.addEventListener('Updated', ()=>{
+          this.info = '';
+          this.descri = '';
+          this.lib = '';
+          this.id = ''; 
+          console.log('Update');
+          this.toastEtat = true;
+          this.toastMessage = "Mise à jour effectuée avec succès";
+          this.toastController();
+        });
+        window.addEventListener('Added', ()=>{
+          this.info = '';
+          this.lib = '';
+          this.id = ''; 
+          this.descri = '';
+          console.log('Added');
+          this.toastEtat = true;
+          this.toastMessage = "Enregistrement effectué avec succès";
+          this.toastController();
+        });
+        window.addEventListener('Deleted', ()=>{
+          this.info = '';
+          this.lib = '';
+          this.id = ''; 
+          this.descri = '';
+          console.log('Deleted');
+          this.toastEtat = true;
+          this.toastMessage = "Suppression effectuée avec succès";
+          this.toastController();
+        });
+      },
       toastController(){
         this.toast = true;
         setTimeout(() => {
           this.toast = false;
-        }, 1000);
+        }, 2000);
       },
       scrolTop(){
         document.documentElement.scrollTo({
@@ -28,6 +60,7 @@ function X_app() {
       info : "<b>glodi</b>",
       lib: '',
       id : 0,
+      descri : '',
       command(commandName, commandArgument){
         console.log(this.descriInfo, commandName)
         //var commandButtons = document.querySelectorAll(".editor-commands a");
@@ -41,47 +74,15 @@ function X_app() {
         /* this.descriInfo = document.getElementById("Editor").innerHTML; */
         
       },
-      infoDetaille(data, x){
-        //document.querySelector('#info'+id).classList.remove('hidden')
-        //this.info = infoDetaille
-        //console.log(id);
-        /* this.info = data.info;
-        this.lib = data.lib;
-        this.id = data.id; */
-        //console.log(data);
-        this.info = x.info;
-        this.lib = data;
-        //this.id = data.id;
-        console.log(x);
-
-        
-        Livewire.on('Added', ()=>{
-          alert('addd');
-          this.toastEtat = true;
-          this.toastMessage = "Enregistrement effectué avec succès";
-          this.toastController();
-        })
-        
-        Livewire.on('Updated', ()=>{
-          this.info = '';
-          this.lib = '';
-          this.id = '';
-          console.log('update');
-          this.toastEtat = true;
-          this.toastMessage = "Mise à jour effectuée avec succès";
-          this.toastController();
-        })
-        Livewire.on('deleted', ()=>{
-          this.info = '';
-          this.lib = '';
-          this.id = '';
-          console.log('update');
-          this.toastEtat = true;
-          this.toastMessage = "Suppression effectuée avec succès";
-          this.toastController();
-        })
-                  /* document.querySelector('#lib').value = this.lib;
-          console.log(document.querySelector('#lib').value); */
+      modal : false,
+      modalTitle : '',
+      modalButton : 0,
+      modalMessage : '',
+      modalController(b,t,m){
+        this.modalButton = b;
+        this.modalTitle = t;
+        this.modalMessage = m;
+        this.modal = true;
       },
       
     }

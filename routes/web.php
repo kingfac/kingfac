@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Congig;
+
+use App\Http\Livewire\Admin\CeproInfos;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +22,16 @@ Route::get('/', function () {
     return view('pages.client.home');
 })->name('client');
 
+
+
+
 //Admin routes
-Route::get('/admin/{token}', function($token){
-    if($token === '333') return view('pages.admin.home');
-    else return view('404.errorToken');
-})->name('admin');
+Route::middleware(['admin.token'])->group(function () {
+    Route::get('/admin', function(){
+        //if($token === '333') 
+        //else return view('404.errorToken');
+        return view('pages.admin.home', ['nav'=> Config::get('admin.nav')]);
+    })->name('admin');
+
+    //Route::get('/admin/info', CeproInfos::class)->name('infos');
+});

@@ -31,3 +31,10 @@ function infoDetaille(data){
     info.value = data.info;
     /* console.log(lib.value); */
 }
+
+function toastController(){
+    
+    setTimeout(() => {
+      
+    }, 1000);
+  }
