@@ -10,36 +10,7 @@ function X_app() {
       toastMessage : '',
       toastEtat : false,
       init(){
-        window.addEventListener('Updated', ()=>{
-          this.info = '';
-          this.descri = '';
-          this.lib = '';
-          this.id = ''; 
-          console.log('Update');
-          this.toastEtat = true;
-          this.toastMessage = "Mise à jour effectuée avec succès";
-          this.toastController();
-        });
-        window.addEventListener('Added', ()=>{
-          this.info = '';
-          this.lib = '';
-          this.id = ''; 
-          this.descri = '';
-          console.log('Added');
-          this.toastEtat = true;
-          this.toastMessage = "Enregistrement effectué avec succès";
-          this.toastController();
-        });
-        window.addEventListener('Deleted', ()=>{
-          this.info = '';
-          this.lib = '';
-          this.id = ''; 
-          this.descri = '';
-          console.log('Deleted');
-          this.toastEtat = true;
-          this.toastMessage = "Suppression effectuée avec succès";
-          this.toastController();
-        });
+        
       },
       toastController(){
         this.toast = true;

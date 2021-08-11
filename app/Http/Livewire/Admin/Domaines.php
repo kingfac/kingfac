@@ -33,7 +33,7 @@ class Domaines extends Component
        session()->flash('message', 'domaine enregistré avec succès');
        $this->emit('Added');
        $this->resetFields();
-
+       $this->emit('Domaine');
     }
     public function update(){
         //dd($this->selectedId);

@@ -4,48 +4,45 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\activite;
 use App\Models\gallerie;
-use App\Models\domaine;
+use App\Models\sousActivite;
 
 use Livewire\Component;
-//use Livewire\WithFileUploads;
+//use Livewire\WithFileUploads; 
 use Livewire\WithFileUploads;
 
-class Activites extends Component
+class SousActivites extends Component
 {
+
     use WithFileUploads;
-    public $activites;
+    public $sousActivites;
     public $nom;
-    public $detail;
-    public $domaine_id;
+    public $sous_titre;
+    public $activite_id;
     public $lastId;
     public $selectedId;
     public $photos = [];
     public $photo;
     public $ctr=0;
     public $galleries=[];
-    public $domaines;
+    public $activites;
     public $imagesGalleries = [];
     public $titre;
     public $photosUpdate = [];
 
-    protected $listeners = ['Domaine' => '$refresh', 'updateGallerie' => '$refresh'];
+    protected $listeners = ['activite' => '$refresh', 'updateGallerie' => '$refresh'];
 
     public function render()
     {
         $this->activites = activite::all();
-        $this->domaines = domaine::all();
+        $this->sousActivites = sousActivite::all();
         $this->imagesGalleries = gallerie::all();
-        /* $getDomaine = function($act_id){
-            foreach($this.gallerie)
-        } */
-        return view('livewire.admin.activites');
+        return view('livewire.admin.sous-activites');
     }
-
     function resetFields(){
         $this->selectedId  = 0;
         $this->nom  = '';
-        $this->detail  = '';
-        $this->domaine_id  = 0;
+        $this->sous_titre  = '';
+        $this->activite_id  = 0;
         $this->photo='';
         $this->photos = [];
         $this->galleries = [];
@@ -58,10 +55,9 @@ class Activites extends Component
             'photos'=>'required'
         ]);
 
-        $validateActivite = $this->validate([
-            'nom'=>'required',
-            'detail'=>'required',
-            'domaine_id'=>'required',
+        $validateSousActivite = $this->validate([
+            'sous_titre'=>'required',
+            'activite_id'=>'required',
         ]);
                 
         if(count($this->photos) != count($this->galleries)){
@@ -70,9 +66,9 @@ class Activites extends Component
                 # code...
                 array_push($this->galleries, [
                     "titre"=>"" , 
-                    "activite_id"=>0,
+                    "activite_id"=>null,
                     "projet_id"=>null,
-                    "sous_acti_id"=>null
+                    "sous_acti_id"=>0
                     ]
                 );
             }
@@ -80,11 +76,11 @@ class Activites extends Component
         
 
         //dd($this->galleries); 
-       $data = activite::create($validateActivite);
+       $data = sousActivite::create($validateSousActivite);
        $this->lastId = $data->id;
        for ($i=0; $i < count($this->galleries); $i++) { 
         # code...
-            $this->galleries[$i]["activite_id"] = $data->id;
+            $this->galleries[$i]["sous_acti_id"] = $data->id;
         }
 
        $this->makegalleries(0, $data->id);
@@ -98,15 +94,13 @@ class Activites extends Component
     public function update(){
         //dd($this->selectedId);
         $v = $this->validate([
-            'nom' => 'required',
             'selectedId' => 'required',
-            'detail' => 'required'
+            'sous_titre' => 'required'
         ]);
-        $record = activite::find($this->selectedId);
+        $record = sousActivite::find($this->selectedId);
         $record->update([
-            'nom' => $this->nom,
-            'detail' => $this->detail,
-            'domaine_id' => $this->domaine_id
+            'sous_titre' => $this->sous_titre,
+            'activite_id' => $this->activite_id
         ]);
         $this->resetFields();
         session()->flash('message', 'activite modifié avec succès');
@@ -116,11 +110,11 @@ class Activites extends Component
 
     function delete(){
         $v = $this->validate([
-            'nom' => 'required',
+            
             'selectedId' => 'required',
-            'detail' => 'required'
+            'sous_titre' => 'required'
         ]);
-        $record = activite::find($this->selectedId);
+        $record = sousActivite::find($this->selectedId);
         $record->delete();
         $this->resetFields();
         session()->flash('message', 'activite Supprimé avec succès');
@@ -129,9 +123,8 @@ class Activites extends Component
     }
     function charger($ligne){
         $this->selectedId = $ligne["id"];
-        $this->nom = $ligne["nom"];
-        $this->detail = $ligne["detail"];
-        $this->domaine_id = $ligne["domaine_id"];
+        $this->sous_titre = $ligne["sous_titre"];
+        $this->activite_id = $ligne["activite_id"];
         $this->countGallerie();
     }
 
@@ -148,9 +141,9 @@ class Activites extends Component
         if($compteur < count($this->photos)){
             array_push($this->galleries, [
                 "titre"=>$data , 
-                "activite_id"=>0,
+                "activite_id"=>null,
                 "projet_id"=>null,
-                "sous_acti_id"=>null
+                "sous_acti_id"=>0
                 ]
             );
         }
@@ -207,9 +200,9 @@ class Activites extends Component
                 # code...
                 array_push($this->galleries, [
                     "titre"=>"" , 
-                    "activite_id"=> $this->selectedId,
+                    "sous_acti_id"=> $this->selectedId,
                     "projet_id"=>null,
-                    "sous_acti_id"=>null
+                    "activite_id"=>null
                     ]
                 );
             }
@@ -238,10 +231,10 @@ class Activites extends Component
         $compteur = count($this->galleries);
         if($compteur < count($this->photosUpdate)){
             array_push($this->galleries, [
-                "titre"=>$data , 
-                "activite_id"=>$this->selectedId,
+                "titre"=>$data ,
+                "sous_acti_id"=>$this->selectedId,
                 "projet_id"=>null,
-                "sous_acti_id"=>null
+                "activite_id"=>null
                 ]
             );
         }
@@ -252,9 +245,5 @@ class Activites extends Component
 
     public function ajouter(){
         $this->ctr = 0;
-    }
-
-    public function show($img){
-        return false;
     }
 }

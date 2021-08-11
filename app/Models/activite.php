@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class activite extends Model
 {
+    protected $fillable = ["nom", "detail", "domaine_id"];
     use HasFactory;
 }

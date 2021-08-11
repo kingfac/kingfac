@@ -5,12 +5,46 @@ function admin (){
         index : 0,
         s : 0,
         step : 40,
-        init(max){
+        gallerie : false,
+        sous_activite : false,
+        initSide(max){
+            window.addEventListener('Updated', ()=>{
+                this.info = '';
+                this.descri = '';
+                this.lib = '';
+                this.id = ''; 
+                console.log('Update');
+                this.toastEtat = true;
+                this.toastMessage = "Mise à jour effectuée avec succès";
+                this.toastController();
+              });
+              window.addEventListener('Added', ()=>{
+                this.info = '';
+                this.lib = '';
+                this.id = ''; 
+                this.descri = '';
+                console.log('Added');
+                this.toastEtat = true;
+                this.toastMessage = "Enregistrement effectué avec succès";
+                this.toastController();
+              });
+              window.addEventListener('Deleted', ()=>{
+                this.info = '';
+                this.lib = '';
+                this.id = ''; 
+                this.descri = '';
+                console.log('Deleted');
+                this.toastEtat = true;
+                this.toastMessage = "Suppression effectuée avec succès";
+                this.toastController();
+              });
             this.side = true;
+            /* A commenter */
+            this.showSide();
             for(let i = 0; i < max ; i++){
                 this.nav.push[false];
             }
-            this.nav[/* this.index */3]=true;
+            this.nav[/* this.index */4]=true;
         },
         naviguer(id){
             console.log(id);

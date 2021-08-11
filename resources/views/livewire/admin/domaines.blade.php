@@ -3,7 +3,7 @@
     <div class="px-5 py-5">
         <div class="grid grid-cols-2 gap-4 divide-y-2">
             <div class="p-2 shadow">   
-                <h1 class="text-xl font-bold divide-x-4 divide-gray-300">Ajouter les descrirmations du site</h1>
+                <h1 class="text-xl font-bold divide-x-4 divide-gray-300">Domaines d'interventions</h1>
                 <div class="flex flex-col gap-8 py-10">
                     <input type="text" class="w-full p-2 placeholder-gray-700 border-2 rounded-lg" placeholder="Domaine d'intervention" id="lib" wire:model="lib">
                     <textarea name="h" id="descri" wire:model="descri" class="p-2 placeholder-gray-600 transition transform border" placeholder="Votre description" ></textarea>
@@ -37,14 +37,6 @@
             </div>
             
         </div>
-    </div>
-    
-    <div x-show="toast" class="absolute top-0 flex items-center justify-center w-full min-h-full p-10 bg-black-transparent"
-            x-transition.duration.500ms
-        >
-            <div class="p-10 bg-white shadow">
-                <h1 class="text-lg font-bold" :class="{'text-red-600' : toastEtat===false, 'text-green-600' : toastEtat}" x-text="toastMessage"></h1>
-            </div>
     </div>
     
     <div class="absolute top-0 flex items-center justify-center w-full min-h-full p-10 bg-black-transparent" x-show="modal" x-transition.duration.500ms>

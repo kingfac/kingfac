@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('admin')
-<div class="flex w-full" x-data="admin()" x-init="init({{count($nav)}})">
+<div class="flex w-full" x-data="admin()" x-init="initSide({{count($nav)}})">
     <div class="min-h-screen transition transform bg-gradient-to-b from-black to-blue-900" id="side"
         :class="{'w-96' : s===0, 'w-1/5' : s==1, 'w-1/6' : s===2, 'w-1/12' : s===3}">
         <div class="flex justify-end py-3 text-white">
@@ -83,6 +83,13 @@
             <livewire:admin.users/>
         </div>
 
+    </div>
+    <div x-show="toast" class="absolute top-0 flex items-center justify-center w-full min-h-full p-10 bg-black-transparent"
+            x-transition.duration.500ms
+        >
+            <div class="p-10 bg-white shadow">
+                <h1 class="text-lg font-bold" :class="{'text-red-600' : toastEtat===false, 'text-green-600' : toastEtat}" x-text="toastMessage"></h1>
+            </div>
     </div>
 </div>
 @endsection

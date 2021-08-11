@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class sousActivite extends Model
 {
+    protected $fillable = ['sous_titre', 'activite_id'];
     use HasFactory;
 }

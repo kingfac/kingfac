@@ -38,14 +38,6 @@
         </div>
     </div>
     
-    <div x-show="toast" class="absolute top-0 flex items-center justify-center w-full min-h-full p-10 bg-black-transparent"
-            x-transition.duration.500ms
-        >
-            <div class="p-10 bg-white shadow">
-                <h1 class="text-lg font-bold" :class="{'text-red-600' : toastEtat===false, 'text-green-600' : toastEtat}" x-text="toastMessage"></h1>
-            </div>
-    </div>
-    
     <div class="absolute top-0 flex items-center justify-center w-full min-h-full p-10 bg-black-transparent" x-show="modal" x-transition.duration.500ms>
         <div class="flex flex-col w-full gap-4 p-5 bg-white shadow md:w-2/3 lg:w-1/4">
             <div class="flex justify-between w-full">
