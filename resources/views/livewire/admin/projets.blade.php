@@ -21,6 +21,7 @@
                 <div class="flex flex-col gap-8 py-10">
                     <input type="text" class="w-full p-2 placeholder-gray-700 border-2 rounded-lg" placeholder="Nom du projet" id="nom" wire:model="nom">
                     <textarea name="h" id="descri" wire:model="descri" class="p-2 placeholder-gray-600 transition transform border" placeholder="Votre description" ></textarea>
+                    <input type="text" class="w-full p-2 placeholder-gray-700 border-2 rounded-lg" placeholder="url youtube du projet" id="nom" wire:model="url">
                     <input type="file" name="photo" id="photos" wire:model="photos" multiple>
                     <div class="grid grid-cols-4 gap-4">
                         <button class="p-3 text-lg font-bold text-white bg-blue-900" @click="modalController(0,'Confirmation','Etes-vous sûr de vouloir enregistrer')">Enregistrer</button>        

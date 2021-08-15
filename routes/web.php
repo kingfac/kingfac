@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('pages.client.home');
 })->name('client');
 
+Route::get('/pages/{page}/{el}', function($page, $el){
+    return view('pages.client.pages', ['page'=>$page, 'el'=>$el]);
+})->name('pages');
+
 
 
 

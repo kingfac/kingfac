@@ -62,13 +62,13 @@
             <livewire:admin.actualites/>
         </div>
         <div x-show="nav[6]" x-transition>
-            <livewire:admin.contacts/>
+            <livewire:admin.contact/>
         </div>
         <div x-show="nav[7]" x-transition>
             <livewire:admin.projets/>
         </div>
         <div x-show="nav[8]" x-transition>
-            <livewire:admin.patrimoine/>
+            <livewire:admin.patrimoines/>
         </div>
         <div x-show="nav[9]" x-transition>
             <livewire:admin.partenaires/>
@@ -76,11 +76,18 @@
         <div x-show="nav[10]" x-transition>
             <livewire:admin.faqs/>
         </div>
-        <div x-show="nav[11]" x-transition>
+       {{--  <div x-show="nav[11]" x-transition>
             <livewire:admin.settings/>
+        </div> --}}
+        <div x-show="nav[11]" x-transition>
+            <livewire:admin.volontaires/>
         </div>
         <div x-show="nav[12]" x-transition>
-            <livewire:admin.users/>
+            <livewire:admin.temoignages/>
+        </div>
+        <div x-show="nav[13]" x-transition>
+            {{-- <livewire:admin.users/> --}}
+            <livewire:admin.banks/>
         </div>
 
     </div>

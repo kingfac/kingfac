@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class partenaire extends Model
 {
+    protected $fillable = [
+        'lib',
+        'url',
+        'parte_id'
+    ];
     use HasFactory;
 }

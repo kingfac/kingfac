@@ -30,38 +30,28 @@
             <h1 class="pb-10 text-xl font-bold text-white">Projets récents</h1>
 
             <ul class="font-bold text-gray-300">
-                <li>1. Je ne sais pas trop quoi mettre</li>
-                <li>2. Je ne sais pas trop quoi mettre</li>
-                <li>3. Je ne sais pas trop quoi mettre</li>
+                @foreach ($projets as $pro)
+                    <li><b>{{$loop->index + 1}}. </b>{{$pro->nom}}</li>
+                @endforeach
             </ul>
 
             <h1 class="py-10 text-xl font-bold text-white">Actualités récentes</h1>
 
             <ul class="font-bold text-gray-300">
-                <li>1. Je ne sais pas trop quoi mettre</li>
-                <li>2. Je ne sais pas trop quoi mettre</li>
-                <li>3. Je ne sais pas trop quoi mettre</li>
+                @foreach ($actualites as $actu)
+                    <li><b>{{$loop->index + 1}}. </b>{{$actu->titre}}</li>
+                @endforeach
             </ul>
         </div>
         <div class="text-center md:text-left">
             <h1 class="pb-10 text-xl font-bold text-yellow-600">Contacts</h1>
             <div class="grid grid-rows-1 gap-4">
+                @foreach ($conts as $ligne)
                 <div class="flex border-b-2 md:justify-start felx-col">
-                    <i class="py-2 text-2xl text-center text-yellow-600 fa fa-user"></i>
-                    <b class="flex-1 py-2 text-xl text-center text-white">cepromor_ongd@hotmail.com</b>
+                    <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{$ligne->icon}}"></path></svg>
+                    <b class="flex-1 py-2 text-xl text-center text-white">{{$ligne->lib}}</b>
                 </div>
-                <div class="flex border-b-2 md:justify-start felx-col ">
-                    <i class="py-4 text-2xl text-center text-yellow-600 fa fa-phone"></i>
-                    <b class="flex-1 py-2 text-xl text-center text-white">+243(0)899682734<br> +243(0)810708377 </b>
-                </div>
-                <div class="flex border-b-2 md:justify-start felx-col ">
-                    <i class="py-4 text-2xl text-center text-yellow-600 fa fa-user"></i>
-                    <b class="flex-1 py-2 text-xl text-center text-white">www.cepromor-aeph.org</b>
-                </div>
-                <div class="flex border-b-2 md:justify-start felx-col ">
-                    <i class="py-4 text-2xl text-center text-yellow-600 fa fa-user"></i>
-                    <span class="flex-1 py-2 text-xl text-center text-white">10ème Rue N° 31, Q/LAWULA, T/ MADIMBA,  Kongo Central /RDC</span>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

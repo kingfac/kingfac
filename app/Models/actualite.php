@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class actualite extends Model
 {
+    protected $fillable = [
+        'titre',
+        'sous_titre',
+        'descri'
+    ];
     use HasFactory;
 }

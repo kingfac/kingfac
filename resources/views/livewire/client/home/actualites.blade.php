@@ -10,27 +10,15 @@
         <div class="splide" id="actuSplide">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <li class="splide__slide">
-                        <img src="{{asset('images/DSC05884.JPG')}}" alt="" srcset="" class="object-cover w-screen hv-60 animate__animated animate__flash">
-                        <div class="relative h-48 px-5 py-5 -mt-40 md:-mt-28 bg-actu-transparent md:h-36 -top-8">
-                            <h1 class="pl-4 text-xl font-bold text-white border-l-8 border-blue-900">Titre de l'actualité</h1>
-                            <p class="text-justify text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex, nihil neque tempore ducimus, et omnis quo doloremque nesciunt laborum voluptatibus impedit. Est, quis enim! Pariatur eos quam repellendus veniam?</p>
-                        </div>
-                    </li>
-                    <li class="splide__slide">
-                        <img src="{{asset('images/DSC05928.JPG')}}" alt="" srcset="" class="object-cover w-screen hv-60 animate__animated animate__flash">
-                        <div class="relative h-48 px-5 py-5 -mt-40 md:-mt-28 bg-actu-transparent md:h-36 -top-8">
-                            <h1 class="pl-4 text-xl font-bold text-white border-l-8 border-yellow-600">Bonjour les mamans</h1>
-                            <p class="text-justify text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex, nihil neque tempore ducimus, et omnis quo doloremque nesciunt laborum voluptatibus impedit. Est, quis enim! Pariatur eos quam repellendus veniam?</p>
-                        </div>
-                    </li>
-                    <li class="splide__slide">
-                        <img src="{{asset('images/20191229_142307.jpg')}}" alt="" srcset="" class="object-cover w-screen hv-60 animate__animated animate__flash">
-                        <div class="relative h-48 px-5 py-5 -mt-40 md:-mt-28 bg-actu-transparent md:h-36 -top-8">
-                            <h1 class="pl-4 text-xl font-bold text-white border-l-8 border-white">Titre de PAPA</h1>
-                            <p class="text-justify text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex, nihil neque tempore ducimus, et omnis quo doloremque nesciunt laborum voluptatibus impedit. Est, quis enim! Pariatur eos quam repellendus veniam?</p>
-                        </div>
-                    </li>
+                    @foreach ($actualites as $actu)
+                        <li class="splide__slide">
+                            <img src="{{asset('storage/actualite/'.$actu->id.'.png')}}" alt="" srcset="" class="object-cover w-screen hv-60 animate__animated animate__flash">
+                            <div class="relative h-48 px-5 py-5 -mt-40 md:-mt-28 bg-actu-transparent md:h-36 -top-8">
+                                <h1 class="pl-4 text-xl font-bold text-white border-l-8 border-blue-900">{{$actu->titre}}</h1>
+                                <p class="text-justify text-white">{{$actu->descri}}</p>
+                            </div>
+                        </li>   
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -39,7 +27,7 @@
 
 
 <div class="py-10 {{-- bg-gradient-to-t from-transparent to-blue-900 --}} flex px-10 gap-4 xl:px-64 md:px-32 lg:px-28 flex-col lg:flex-row" id="resume">
-    <div class="flex flex-col items-center justify-between border-2 border-gray-300 border-dotted">
+    <div class="flex flex-col items-center justify-between flex-1 border-2 border-gray-300 border-dotted">
         <div class="img">
             <img src="" alt="CEO-IMAGE" class="object-cover">
         </div>
@@ -51,30 +39,30 @@
             </p>
         </div>
     </div>
-    <div class="flex flex-col items-center justify-between shadow">
+    <div class="flex flex-col items-center justify-between flex-1 shadow">
         <div class="img">
-            <img src="{{asset('images/IMG-20200612-WA0025.jpg')}}" alt="" class="object-cover">
+            <img src="{{asset('storage/headerInfo/'.$infos[3]->id.'.png')}}" alt="" class="object-cover">
         </div>
         <div class="px-6 py-2 text-justify content">
-            <h1 class="text-xl font-bold">Nôtre Mission</h1>
-            <p class="py-3">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum officia quo impedit? Nesciunt, suscipit id ea nisi, fuga perspiciatis possimus aliquam tempora odit repudiandae quia vitae aut perferendis consectetur quisquam!
-            </p>
+            <h1 class="text-xl font-bold">{{$ceproInfos[2]->lib}}</h1>
+            <div class="mt-3 text-justify text-article">
+                <?php echo $ceproInfos[2]->info; ?>
+            </div>...
         </div>
-        <a href="#" class="w-11/12 px-6 py-3 mb-2 text-lg font-bold text-center text-white bg-yellow-600 rounded">Lire la suite</a>
+        <a href="{{route('pages', ['page'=>'cepromor', 'el'=>'2'])}}" class="w-11/12 px-6 py-3 mb-2 text-lg font-bold text-center text-white bg-yellow-600 rounded">Lire la suite</a>
 
     </div>
-    <div class="flex flex-col items-center justify-between shadow">
+    <div class="flex flex-col items-center justify-between flex-1 shadow">
         <div class="img">
-            <img src="{{asset('images/IMG-20200612-WA0025.jpg')}}" alt="" class="object-cover">
+            <img src="{{asset('storage/headerInfo/'.$infos[0]->id.'.png')}}" alt="" class="object-cover">
         </div>
         <div class="px-6 py-2 text-justify content">
-            <h1 class="text-xl font-bold">Nôtre Mission</h1>
-            <p class="py-3">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum officia quo impedit? Nesciunt, suscipit id ea nisi, fuga perspiciatis possimus aliquam tempora odit repudiandae quia vitae aut perferendis consectetur quisquam!
-            </p>
+            <h1 class="text-xl font-bold">{{$ceproInfos[3]->lib}}</h1>
+            <div class="mt-3 text-justify text-article">
+                <?php echo $ceproInfos[3]->info; ?>
+            </div>...
         </div>
-        <a href="#" class="w-11/12 px-6 py-3 mb-2 text-lg font-bold text-center text-white bg-yellow-600 rounded">Lire la suite</a>
+        <a href="{{route('pages', ['page'=>'cepromor', 'el'=>'3'])}}" class="w-11/12 px-6 py-3 mb-2 text-lg font-bold text-center text-white bg-yellow-600 rounded">Lire la suite</a>
 
     </div>    
     

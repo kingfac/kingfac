@@ -7,6 +7,7 @@ function admin (){
         step : 40,
         gallerie : false,
         sous_activite : false,
+        type : false,
         initSide(max){
             window.addEventListener('Updated', ()=>{
                 this.info = '';
@@ -40,11 +41,11 @@ function admin (){
               });
             this.side = true;
             /* A commenter */
-            this.showSide();
+            /* this.showSide(); */
             for(let i = 0; i < max ; i++){
                 this.nav.push[false];
             }
-            this.nav[/* this.index */4]=true;
+            this.nav[this.index]=true;
         },
         naviguer(id){
             console.log(id);

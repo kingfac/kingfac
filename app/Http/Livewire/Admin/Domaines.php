@@ -5,13 +5,20 @@ namespace App\Http\Livewire\Admin;
 use App\Models\domaine;
 use Livewire\Component;
 
+use Illiminate\Support\Facades\Storage;
+
+use Livewire\WithFileUploads;
+
 class Domaines extends Component
 {
+    use WithFileUploads;
     public $domaines;
     public $selectedId;
     public $lib;
     public $descri;
     public $lastId;
+    public $photo;
+
     public function render()
     {
         $this->domaines = domaine::all();
@@ -21,6 +28,7 @@ class Domaines extends Component
         $this->selectedId  = 0;
         $this->lib  = '';
         $this->descri  = '';
+        $this->photo = '';
     }
 
     function store(){
@@ -28,8 +36,12 @@ class Domaines extends Component
            'lib' => 'required',
            'descri' => 'required'
        ]);      
-       $data = domaine::create($validatedData);
-       $this->lastId = $data->id;
+       $record = domaine::create($validatedData);
+       $this->lastId = $record->id;
+       $this->validate([
+        'photo'=>'required'
+    ]);
+    $this->photo->storePubliclyAs('public/domaine/', $record->id.'.png');
        session()->flash('message', 'domaine enregistré avec succès');
        $this->emit('Added');
        $this->resetFields();
@@ -47,6 +59,12 @@ class Domaines extends Component
             'lib' => $this->lib,
             'descri' => $this->descri
         ]);
+
+        if(!empty($this->photo)){
+            $this->photo->storePubliclyAs('public/domaine/', $this->selectedId.'.png');
+            $this->emitSelf('imgUpdate');
+        }
+
         $this->resetFields();
         session()->flash('message', 'domaine modifié avec succès');
         $this->emit('Updated');
@@ -61,6 +79,7 @@ class Domaines extends Component
         ]);
         $record = domaine::find($this->selectedId);
         $record->delete();
+        Storage::delete('public/domaine/'.$this->selectedId.'.png');
         $this->resetFields();
         session()->flash('message', 'domaine Supprimé avec succès');
         $this->emit('Deleted');

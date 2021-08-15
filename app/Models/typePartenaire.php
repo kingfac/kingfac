@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class typePartenaire extends Model
 {
+    protected $fillable = ['lib'];
     use HasFactory;
 }

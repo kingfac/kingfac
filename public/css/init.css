@@ -21,6 +21,10 @@ html {
     background-color: rgba(0, 0, 0, 0.801);
 }
 
+.bg-blue-transparent {
+    background-color: rgba(0, 76, 216, 0.404);
+}
+
 .bg-black-transparent-nav { 
     background-color: rgba(0, 0, 0, .3);
 }
@@ -58,4 +62,24 @@ html {
 
 .bg-actu-transparent {
     background-color: rgba(0,0,0,.5);
+}
+
+.text-article {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;     /* fallback */
+    max-height: 200px;      /* fallback */
+    -webkit-line-clamp: 8; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.text-actu {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;     /* fallback */
+    max-height: 100px;      /* fallback */
+    -webkit-line-clamp: 5; /* number of lines to show */
+    -webkit-box-orient: vertical;
 }

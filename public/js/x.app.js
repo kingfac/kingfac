@@ -9,6 +9,43 @@ function X_app() {
       toast : false,
       toastMessage : '',
       toastEtat : false,
+      zoom:false, 
+      img:'1',
+      video:'',
+      youtube:false,
+      com : [],
+      precedent : 0,
+      startCom(data){
+        window.addEventListener('Faqs', ()=>{
+         this.com.push(false);
+         alert('nouveau')
+        });
+        data.forEach(d => {
+          this.com.push(false);
+        });
+      },
+      navCom(id){
+        
+        if(id == 0 && this.precedent == 0) {
+          this.com[id] = !this.com[id];
+        }
+        else if (this.precedent != id){
+          this.com[id] = !this.com[id];
+          this.com[this.precedent] = false;
+          this.precedent = id;
+        }
+        else{
+          this.com[id] = false;
+          this.precedent = 0;
+        }
+      },
+      voir(data){
+        this.video = 'https://www.youtube.com/embed/'+data;
+        this.youtube = true;
+      },
+      zoomer(path){
+            return  path + '/' + this.img + '.png'
+      },
       init(){
         
       },

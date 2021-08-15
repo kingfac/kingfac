@@ -1,9 +1,9 @@
-<div class="absolute top-0 w-full bg-black-transparent-nav" x-data="{cepro:false, domaine:false, open:false}" {{-- :class="{'bg-black-transparent-nav':cepro===false, 'bg-black-transparent-nav-1':cepro===true}" --}}>
+<div class="top-0 w-full bg-black-transparent-nav" x-data="{cepro:false, domaine:false, open:false}" {{-- :class="{'bg-black-transparent-nav':cepro===false, 'bg-black-transparent-nav-1':cepro===true}" --}} id="nav">
     <nav class="">
         <div class="max-w-full px-2 mx-auto lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center justify-between w-full">
-                    {{-- actu projetRecent nous temoignage partenaires volontaires --}}
+                    {{-- actu projetRecent nous temoignage partenaires volontaires --}} 
                     <a href="{{route('client')}}" class="flex flex-row ">
                         <img src="{{asset('images/logocepro.png')}}" alt="" class="w-12 h-12">
                         <div class="relative w-4/5 px-3 text-white md:block">
@@ -18,7 +18,7 @@
                             </a>
                             <a href="#projetRecent" class="px-3 py-2 text-sm font-bold text-white rounded-md hover:text-gray-500">PROJETS</a>
                             <a href="#actu" class="px-3 py-2 text-sm font-bold text-white rounded-md hover:text-gray-500">ACTUALITÉS</a>
-                            <a href="{{route('client')}}" class="px-3 py-2 text-sm font-bold text-white rounded-md hover:text-gray-500">DOMAINES D'INTERVENTIONS</a>
+                            <a href="#" class="px-3 py-2 text-sm font-bold text-white rounded-md hover:text-gray-500" @click="domaine=!domaine" @click.outside="domaine=false">DOMAINES D'INTERVENTIONS</a>
                             <a href="#footer" class="px-3 py-2 text-sm font-bold text-yellow-600 rounded-md hover:text-gray-500">CONTACTS</a>
                         </ul>
                     </div>
@@ -52,24 +52,32 @@
                 </a>
                 <a href="{{route('client')}}" class="px-3 py-2 text-sm font-bold text-white rounded-md hover:text-gray-800">PROJETS</a>
                 <a href="{{route('client')}}" class="px-3 py-2 text-sm font-bold text-white rounded-md hover:text-gray-800">ACTUALITÉS</a>
-                <a href="{{route('client')}}" class="px-3 py-2 text-sm font-bold text-white rounded-md hover:text-gray-800">DOMAINES D'INTERVENTIONS</a>
+                <a href="#" class="px-3 py-2 text-sm font-bold text-white rounded-md hover:text-gray-800" @click="domaine=!domaine" @click.outside="domaine=false">DOMAINES D'INTERVENTIONS</a>
                 <a href="{{route('client')}}" class="px-3 py-2 text-sm font-bold text-yellow-500 rounded-md hover:text-gray-800">CONTACTS</a>
             </div>
         </div>
-        <div class="p-5 text-white transform border-t h-1/2" 
-            x-show="cepro"
-            x-transition.duration.500ms
-        >
+        <div class="p-5 text-white transform border-t h-1/2"  x-show="cepro" x-transition.duration.500ms >
             <h1 class="hidden pb-10 font-extrabold text-center divide-y-2">A PROPOS DE CEPROMOR  & AEPH </h1>
             <div class="flex justify-between bg-red-900 lg:hidden">
                 <h1 class="font-extrabold">A PROPOS DE CEPROMOR  & AEPH </h1>
                 <button class="px-4 bg-red-900" @click="cepro=!cepro">X</button>
             </div>
-            <div class="grid bg-blue-900 divide-y-2 divide-yellow-600 md:bg-transparent md:gap-4 lg:grid-cols-4">
-                <a href="{{route('client')}}" class="py-5 text-xl font-bold text-center transition duration-300 transform bg-black-transparent hover:scale-95">Notre identite</a>
-                <a href="{{route('client')}}" class="py-5 text-xl font-bold text-center transition duration-300 transform bg-black-transparent hover:scale-95">Notre identite</a>
-                <a href="{{route('client')}}" class="py-5 text-xl font-bold text-center transition duration-300 transform bg-black-transparent hover:scale-95">Notre identite</a>
-                <a href="{{route('client')}}" class="py-5 text-xl font-bold text-center transition duration-300 transform bg-black-transparent hover:scale-95">Notre identite</a>
+            <div class="grid bg-blue-900 divide-y-2 divide-yellow-600 md:bg-transparent md:gap-4 lg:grid-cols-5">
+                @foreach ($ceproInfos as $inf)
+                    <a href="{{route('pages', ['page' => 'cepromor', 'el'=> $inf->id.'/#info'.$inf->id])}}" class="py-5 text-xl font-bold text-center transition duration-300 transform bg-black-transparent hover:scale-95">{{$inf->lib}}</a>
+                @endforeach
+            </div>
+        </div>
+        <div class="w-full p-5 text-white transform bg-gray-900 border-t h-1/2"  x-show="domaine" x-transition.duration.500ms >
+            <h1 class="hidden pb-10 font-extrabold text-center divide-y-2">DOMAINES D'INTERVENTIONS DE CEPROMOR  & AEPH </h1>
+            <div class="flex justify-between bg-red-900 lg:hidden">
+                <h1 class="font-extrabold">DOMAINES D'INTERVENTIONS DE CEPROMOR  & AEPH </h1>
+                <button class="px-4 bg-red-900" @click="domaine=!domaine">X</button>
+            </div>
+            <div class="grid {{-- divide-y-2 divide-yellow-600 --}} md:bg-transparent md:gap-6 lg:grid-cols-2">
+                @foreach ($domaines as $dom)
+                    <a href="{{route('pages', ['page' => 'activite', 'el'=> $dom->id.'/#domaine'.$dom->id])}}" class="py-5 text-xl font-bold text-center transition duration-300 transform border hover:scale-95" {{-- style="background-color: rgba(0, 0, 255, 0.137)" --}}>{{$dom->lib}}</a>
+                @endforeach
             </div>
         </div>
     </nav>

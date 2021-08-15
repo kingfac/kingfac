@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class patrimoine extends Model
 {
+    protected $fillable = [
+        'lib',
+        'qte',
+        'nature',
+        'patri_id'
+    ];
     use HasFactory;
 }

@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-4" x-data>
     {{-- In work, do what you enjoy. --}}
     <div class="px-4 py-4 shadow xl:px-72 lg:px-28">
-        <h1 class="mb-5 text-2xl text-center">Gestion des informations du site</h1>
+        <h1 class="mb-5 text-2xl text-center">Gestion des informations de l'entête du site</h1>
         <div class="flex gap-4">
             <div class="flex flex-col flex-1 gap-4">
                 <input type="text" placeholder="Le titre de l'info" class="p-2 border rounded" wire:model="titre">

@@ -17,6 +17,7 @@ class Projets extends Component
     public $projets;
     public $nom;
     public $descri;
+    public $url='';
     public $lastId;
     public $selectedId;
     public $photos = [];
@@ -41,6 +42,7 @@ class Projets extends Component
         $this->selectedId  = 0;
         $this->nom  = '';
         $this->descri  = '';
+        $this->url = '';
         $this->photo='';
         $this->photos = [];
         $this->galleries = [];
@@ -56,6 +58,7 @@ class Projets extends Component
         $validateprojet = $this->validate([
             'nom'=>'required',
             'descri'=>'required',
+            'url'=>'required',
         ]);
                 
         if(count($this->photos) != count($this->galleries)){
@@ -93,12 +96,14 @@ class Projets extends Component
         //dd($this->selectedId);
         $v = $this->validate([
             'nom' => 'required',
+            'url' => 'required',
             'selectedId' => 'required',
             'descri' => 'required'
         ]);
         $record = projet::find($this->selectedId);
         $record->update([
             'nom' => $this->nom,
+            'url' => $this->url,
             'descri' => $this->descri,
         ]);
         $this->resetFields();
@@ -109,9 +114,7 @@ class Projets extends Component
 
     function delete(){
         $v = $this->validate([
-            'nom' => 'required',
             'selectedId' => 'required',
-            'descri' => 'required'
         ]);
         $record = projet::find($this->selectedId);
         $record->delete();
@@ -124,6 +127,7 @@ class Projets extends Component
         $this->selectedId = $ligne["id"];
         $this->nom = $ligne["nom"];
         $this->descri = $ligne["descri"];
+        $this->url = $ligne["url"];
         $this->countGallerie();
     }
 

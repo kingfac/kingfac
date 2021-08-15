@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class contacts extends Model
 {
+    protected $fillable = [
+        'icon',
+        'url',
+        'lib'
+    ];
     use HasFactory;
 }

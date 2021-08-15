@@ -6,17 +6,16 @@
             <div class="flex-1 text-justify">
                 <div class="p-2 text-xl font-bold text-center text-white xl:w-1/2 md:w-1/2 bg-orange-transparent">Projets récents</div>
                 <div class="py-4 text-3xl font-bold text-white">
-                    <h1>Projet de construction d'une école</h1>
+                    <h1>{{$projets[0]->nom}}</h1>
                 </div>
                 <p class="text-lg text-white">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa eveniet illum tenetur maiores illo suscipit, blanditiis iste voluptatum laudantium aliquam nulla mollitia eaque porro soluta vitae omnis et! Ullam, provident.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa eveniet illum tenetur maiores illo suscipit, blanditiis iste voluptatum laudantium aliquam nulla mollitia eaque porro soluta vitae omnis et! Ullam, provident.
+                    {{$projets[0]->descri}}
                 </p>
             </div>
             <div class="flex-1 lg:pl-20 h-96 md:pl-10">
                 <iframe 
                     class="w-full md:h-full ring-blue-900 ring-8 ring-inset h-96"
-                    src="https://www.youtube.com/embed/-4psqMCvWn0" 
+                    src="https://www.youtube.com/embed/{{$projets[0]->url}}" 
                     title="YouTube video player" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -24,8 +23,8 @@
                 </iframe>
             </div>
         </div>
-        <div class="py-2 bg-black-transparent">
-            <button class="w-full p-3 text-xl font-bold text-white transition duration-100 transform rounded-lg hover:scale-95">Voir autres projets</button>
+        <div class="py-2 text-center bg-black-transparent">
+            <a class="p-3 text-xl font-bold text-white transition duration-100 transform rounded-lg hover:scale-95 min-w-screen" href="{{route('pages', ['page'=>'projet', 'el'=>'null'])}}">Voir autres projets</a>
         </div>
     </div>
 </div>

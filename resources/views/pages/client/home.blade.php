@@ -7,7 +7,7 @@
     <livewire:client.home.actualites />
     <livewire:client.home.projets />
     <livewire:client.home.volontaires />
-    <livewire:client.home.temoignage />
-    <livewire:client.home.partenaire />
+    <livewire:client.home.temoignages />
+    <livewire:client.home.partenaires />
     <livewire:client.footer />
 @endsection

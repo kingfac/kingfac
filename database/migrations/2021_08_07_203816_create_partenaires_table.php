@@ -15,6 +15,9 @@ class CreatePartenairesTable extends Migration
     {
         Schema::create('partenaires', function (Blueprint $table) {
             $table->id();
+            $table->string('lib');
+            $table->string('url');
+            $table->foreignId('parte_id')->constrained('type_partenaires');
             $table->timestamps();
         });
     }

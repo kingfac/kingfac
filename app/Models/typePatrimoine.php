@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class typePatrimoine extends Model
 {
+    protected $fillable = ['lib'];
     use HasFactory;
 }
