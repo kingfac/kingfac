@@ -80,7 +80,7 @@
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
     <div class="flex items-center justify-center h-1/3" id="domaine">
         {{-- <img src="{{asset('storage/domaine/'.$domaine_id.'.png')}}" alt="" srcset="" class="object-cover w-full h-full obj"> --}}
-        <h1 class="p-3 text-2xl font-bold text-white bg-orange-transparent">{{$domaines->lib}}</h1>
+        <h1 class="p-3 text-2xl font-bold text-center text-white bg-orange-transparent">{{$domaines->lib}}</h1>
     </div>
     <div class="flex flex-col min-h-screen">
         <div class="px-10 py-4 text-xl text-justify xl:px-60">
@@ -125,7 +125,7 @@
     </div>
 
     <div class="fixed top-0 flex flex-col w-full min-h-screen gap-4 px-2 lg:p-20" style="background-color: rgba(0, 0, 0, 0.801)" x-show="zoom" x-transition.duration.500ms>
-        <div class="relative flex justify-between text-lg font-bold text-white lg:top-0 top-5">
+        <div class="relative flex justify-between text-lg font-bold text-white lg:top-0 top-20">
             <h1 x-text="chemin">IMAGE ZOOME</h1>
             <button class="px-5 bg-red-700 hover:bg-red-900" @click="zoom=false">X</button>
         </div>

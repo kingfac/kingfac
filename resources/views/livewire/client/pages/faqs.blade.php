@@ -9,7 +9,7 @@
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
-        }
+        } 
         
     </style>
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
@@ -22,7 +22,36 @@
             {{-- <h1 class="py-6 text-3xl font-extrabold text-center text-orange">faq EN ESPECE (FINANCE)</h1>
             <p class="text-center">Pour ceux qui veulent nous faire un faq financier veillez effectuer un virement aux comptes ci-dessous</p> --}}
         </div>
-        <div class="flex flex-1 px-10 xl:px-52">
+        <div class="flex flex-col flex-1 px-6 xl:px-52 lg:flex-row">
+            {{-- formulaire commentaire pour les mobiles crans --}}
+            <div class="px-10 py-2 text-center bg-gray-100 border-l-8 lg:hidden">
+                <div x-show="!commenter">
+                    <h1 class="py-6 text-3xl font-extrabold text-center text-orange">NOUVELLE QUESTION</h1>
+                    <hr>
+
+                    <div class="flex flex-col gap-4 pt-10">
+                        <input type="text" wire:model="name" placeholder="Votre nom" class="p-3 rounded-lg">
+                        <input type="text" wire:model="objet" placeholder="Objet ou sujet" class="p-3 rounded-lg">
+                        <textarea name="contenu" id="" wire:model="contenu" placeholder="Contenu de la question" class="px-3 h-36"></textarea>
+                        <div class="flex items-center justify-end">
+                            <button class="px-10 py-2 text-lg text-white rounded bg-orange " wire:click="store">Envoyer</button>
+                        </div>
+                    </div>
+                </div>
+                <div x-show="commenter">
+                    <h1 class="py-6 text-3xl font-extrabold text-center text-orange">Votre commentaire ici</h1>
+                    <hr>
+
+                    <div class="flex flex-col gap-4 pt-10">
+                        <input type="text" wire:model="nameCom" placeholder="Votre nom" class="p-3 rounded-lg">
+                        <textarea name="contenu" id="" wire:model="comment" placeholder="Contenu du commentaire" class="px-3 h-36"></textarea>
+                        <div class="flex items-center justify-end">
+                            <button class="px-10 py-2 text-lg text-white rounded bg-orange " wire:click="commenter">Envoyer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Questions --}}
             <div class="flex-1 bg-white">
                 <h1 class="px-6 py-6 text-3xl font-extrabold text-orange">Questions recentes</h1>
                 <div class="flex flex-col gap-4">                    
@@ -72,7 +101,8 @@
                     {{-- Fin de la boucle des questions --}}
                 </div>
             </div>
-            <div class="px-10 py-2 text-center bg-gray-100 border-l-8">
+            {{-- formulaire commentaire pour les grands ecrans --}}
+            <div class="hidden px-10 py-2 text-center bg-gray-100 border-l-8 lg:block">
                 <div x-show="!commenter">
                     <h1 class="py-6 text-3xl font-extrabold text-center text-orange">NOUVELLE QUESTION</h1>
                     <hr>

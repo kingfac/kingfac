@@ -3,6 +3,8 @@
 
 Alpine.start();  */
 
+const { indexOf } = require("lodash");
+
 
 function X_app() {
     return {
@@ -15,6 +17,15 @@ function X_app() {
       youtube:false,
       com : [],
       precedent : 0,
+      navType : true,
+      navInit(){
+        if(window.location.pathname.indexOf('pages') != -1){
+          this.navType = false;
+        }
+        else {
+          this.navType = true;
+        }
+      },
       startCom(data){
         window.addEventListener('Faqs', ()=>{
          this.com.push(false);
