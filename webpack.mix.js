@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-var LiveReloadPlugin = require('webpack-livereload-plugin');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -13,6 +13,10 @@ var LiveReloadPlugin = require('webpack-livereload-plugin');
 
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
-        //
+        require('postcss-import'),
         require('tailwindcss'),
     ]);
+
+if (mix.inProduction()) {
+    mix.version();
+}

@@ -30,12 +30,16 @@ Route::get('/pages/{page}/{el}', function($page, $el){
 
 
 //Admin routes
-Route::middleware(['admin.token'])->group(function () {
-    Route::get('/admin', function(){
-        //if($token === '333') 
-        //else return view('404.errorToken');
-        return view('pages.admin.home', ['nav'=> Config::get('admin.nav')]);
-    })->name('admin');
-
+/* Route::middleware(['admin.token'])->group(function () {
+    
     //Route::get('/admin/info', CeproInfos::class)->name('infos');
-});
+}); */
+Route::middleware(['auth:sanctum', 'verified'])->get('/admin', function(){
+    //if($token === '333') 
+    //else return view('404.errorToken');
+    return view('pages.admin.home', ['nav'=> Config::get('admin.nav')]);
+})->name('admin');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

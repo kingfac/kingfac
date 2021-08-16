@@ -24,7 +24,9 @@
         {{-- @include('pages.admin.home') --}}
         @yield('admin')
         <button class="fixed px-5 py-4 text-lg font-bold text-white transition duration-300 transform bg-gray-900 right-5 bottom-10 hover:opacity-25" id="scrolleur" @click="scrolTop()">
-            <i class="fa fa-chevron-up"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+            </svg>
         </button>
         @livewireScripts
         <script src="{{asset('js/app.js')}}"></script>
