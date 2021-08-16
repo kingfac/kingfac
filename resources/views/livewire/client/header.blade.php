@@ -22,9 +22,9 @@
             <div class="flex flex-col items-center  text-white hv-60 {{-- bg-black-transparent --}} w-screen left-0 absolute top-0 pt-20">
                 <img src="{{asset('images/logocepro.png')}}" alt="" srcset="" class="mb-5 h-1/4">
                 <p class="px-5 mb-2 bg-blue-900">BIENVENUE</p>
-                <h1 class="pb-3 text-4xl font-extrabold">CEPROMOR & AEPH</h1>
+                <h1 class="pb-3 text-4xl font-extrabold">{{$infos[0]->titre}}</h1>
                 {{-- <h1 class="text-6xl font-bold">Ensemble Aidons Nos Frères</h1> --}}
-                <h1 class="p-4 text-lg font-extrabold xl:text-6xl bg-black-transparent animate__animated animate__bounceInDown md:text-4xl lg:text-4xl">ASSOCIATION A BUT SANS LUCRATIF</h1>
+                <h1 class="p-4 text-lg font-extrabold xl:text-6xl bg-black-transparent animate__animated animate__bounceInDown md:text-4xl lg:text-4xl">{{$infos[0]->descri}}</h1>
                                 
             </div>
             <div class="grid grid-rows-2 gap-6 md:grid-cols-2 lg:px-40 xl:px-1">

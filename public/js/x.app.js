@@ -3,8 +3,6 @@
 
 Alpine.start();  */
 
-const { indexOf } = require("lodash");
-
 
 function X_app() {
     return {

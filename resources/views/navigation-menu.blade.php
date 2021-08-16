@@ -1,18 +1,19 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="px-4 mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center flex-shrink-0">
-                    <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block w-auto h-9" />
+                    <a href="{{ route('admin') }}">
+                        {{-- <x-jet-application-mark class="block w-auto h-9" /> --}}
+                        <img src="{{asset('images/logocepro.png')}}" alt="" srcset="" class="block w-auto h-9">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('admin') }}" :active="request()->routeIs('admin')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>

@@ -38,54 +38,51 @@
         </div>
     </div>
     <div class="flex flex-col flex-1">
-        <div class="p-3 bg-gradient-to-r from-black to-blue-900">
-            <a href="#" class="text-lg" @click="nav[0] = !nav[0]">Glodi</a>
-            <a href="#" class="text-lg" x-text="s">Glodi</a>
-        </div>
+        @livewire('navigation-menu')
         
-        <div x-show="nav[0]" x-transition>
+        <div x-show="nav[0]" >
             <livewire:admin.dash/>
         </div>
-        <div x-show="nav[1]" x-transition>
+        <div x-show="nav[1]" >
             <livewire:admin.cepro-infos/>
         </div>
-        <div x-show="nav[2]" x-transition>
+        <div x-show="nav[2]" >
             <livewire:admin.domaines/>
         </div>
-        <div x-show="nav[3]" x-transition>
+        <div x-show="nav[3]" >
             <livewire:admin.activites/>
         </div>
-        <div x-show="nav[4]" x-transition>
+        <div x-show="nav[4]" >
             <livewire:admin.header-info/>
         </div>
-        <div x-show="nav[5]" x-transition>
+        <div x-show="nav[5]" >
             <livewire:admin.actualites/>
         </div>
-        <div x-show="nav[6]" x-transition>
+        <div x-show="nav[6]" >
             <livewire:admin.contact/>
         </div>
-        <div x-show="nav[7]" x-transition>
+        <div x-show="nav[7]" >
             <livewire:admin.projets/>
         </div>
-        <div x-show="nav[8]" x-transition>
+        <div x-show="nav[8]" >
             <livewire:admin.patrimoines/>
         </div>
-        <div x-show="nav[9]" x-transition>
+        <div x-show="nav[9]" >
             <livewire:admin.partenaires/>
         </div>
-        <div x-show="nav[10]" x-transition>
+        <div x-show="nav[10]" >
             <livewire:admin.faqs/>
         </div>
-       {{--  <div x-show="nav[11]" x-transition>
+       {{--  <div x-show="nav[11]" >
             <livewire:admin.settings/>
         </div> --}}
-        <div x-show="nav[11]" x-transition>
+        <div x-show="nav[11]" >
             <livewire:admin.volontaires/>
         </div>
-        <div x-show="nav[12]" x-transition>
+        <div x-show="nav[12]" >
             <livewire:admin.temoignages/>
         </div>
-        <div x-show="nav[13]" x-transition>
+        <div x-show="nav[13]" >
             {{-- <livewire:admin.users/> --}}
             <livewire:admin.banks/>
         </div>

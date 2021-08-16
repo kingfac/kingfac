@@ -41,5 +41,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin', function(){
 })->name('admin');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    //return view('dashboard');
+    return view('pages.admin.home', ['nav'=> Config::get('admin.nav')]);
 })->name('dashboard');
