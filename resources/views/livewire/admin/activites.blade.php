@@ -7,14 +7,14 @@
     @endif --}}
     <div class="px-5 py-5">
         @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="grid grid-cols-2 gap-4 divide-y-2">
             <div class="p-2 shadow">   
                 <h1 class="text-xl font-bold divide-x-4 divide-gray-300">Gestion des activités</h1>
@@ -47,7 +47,7 @@
                     
                     <div class="">
                         @if ($selectedId)
-                            <button href="#" class="w-full p-2 text-lg font-bold shadow" @click="gallerie = !gallerie">Modifier gallerie d'images</button>
+                            <button href="#" class="w-full p-2 text-lg font-bold shadow" @click="gallerie=true">Modifier gallerie d'images</button>
                         @endif
                     </div>
                 </div> 

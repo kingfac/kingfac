@@ -32,7 +32,7 @@
                     
                     <div class="">
                         @if ($selectedId)
-                            <button href="#" class="p-2 text-lg font-bold shadow" @click="gallerie = !gallerie">Modifier gallerie d'images</button>
+                            <button href="#" class="p-2 text-lg font-bold shadow" @click="gallerie=true">Modifier gallerie d'images</button>
                         @endif
                     </div>
                 </div> 
