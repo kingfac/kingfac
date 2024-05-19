@@ -1,8 +1,11 @@
 
-## Kingfac coding
+## GLODI NSUADI KIESE
 
-- **[Web and mobile app development]**
-- **[machine learning in python]**
-- **[Arduino]**
+- **[DataScience]**
+- **[Laravel]**
+- **[Flutter]**
+- **[JavaScript]**
+- **[Symfony]**
+- 
 
 
