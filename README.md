@@ -6,6 +6,5 @@
 - **[Flutter]**
 - **[JavaScript]**
 - **[Symfony]**
-- 
 
 
